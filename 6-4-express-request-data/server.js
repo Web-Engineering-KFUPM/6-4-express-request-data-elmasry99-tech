@@ -156,4 +156,8 @@ app.param("userId",(req,res,next,userId)=>{
     req.userIdNum = num;
     next();
 });
-x
+
+
+app.get("/users/:userId",(req,res)=>{
+    res.json({ok:true, userId: req.userIdNum});
+});
