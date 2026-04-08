@@ -148,3 +148,12 @@ app.get("/profile/:first/:last",(req,res)=>{
     res.json({ok:true, fullName: `${first} ${last}`});
 });
 
+app.param("userId",(req,res,next,userId)=>{
+    const num = Number(userId);
+    if(isNaN(num) || num <= 0){
+        return res.status(400).json({ok:false, error:"userId must be positive number"});
+    }
+    req.userIdNum = num;
+    next();
+});
+x
